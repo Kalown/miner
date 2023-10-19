@@ -40,7 +40,7 @@ while True:
 
         # Extract and save email addresses to the email_output_file using regular expressions
         with open(email_output_file, 'w') as email_file:
-            email_pattern = r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}'
+            email_pattern = r'[A-Za-z0-9._%+-]+@' + re.escape(domain)' # Match only emails with the same domain
             email_addresses = re.findall(email_pattern, str(soup))
             for email in email_addresses:
                 email_file.write("Email: " + email + '\n')

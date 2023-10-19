@@ -1,6 +1,8 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import re
+from urllib.parse import urlparse
+
 import ssl
 
 
@@ -21,6 +23,8 @@ ctx = ssl.create_default_context() #ignore ssl certification error with this 3 l
 ctx.check_hostname = False
 ctx.verify_mode= ssl.CERT_NONE
 
+
+
 while True:
     url = input('Enter a website with http/https: ')
     anchor_output_file = input('Enter the file name for anchor tags (e.g., anchor_output.txt): ')
@@ -29,6 +33,10 @@ while True:
     try:
         html = urllib.request.urlopen(url).read()
         soup = BeautifulSoup(html, 'html.parser')
+
+        # Get the domain from the URL
+        parsed_url = urlparse(url)
+        domain = parsed_url.netloc
 
         # Retrieve all anchor tags and save them to the anchor_output_file
         with open(anchor_output_file, 'w') as anchor_file:
@@ -40,7 +48,7 @@ while True:
 
         # Extract and save email addresses to the email_output_file using regular expressions
         with open(email_output_file, 'w') as email_file:
-            email_pattern = r'[A-Za-z0-9._%+-]+@' + re.escape(domain)' # Match only emails with the same domain
+            email_pattern = r'[A-Za-z0-9._%+-]+@' + re.escape(domain)  # Match only emails with the same domain
             email_addresses = re.findall(email_pattern, str(soup))
             for email in email_addresses:
                 email_file.write("Email: " + email + '\n')

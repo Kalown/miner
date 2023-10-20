@@ -1,11 +1,14 @@
 # miner
 Miner is a simple but powerful web scraping tool which can scrap the HELL out of a website.
 
+**#Requirements:**
+pip install scrapy
+
 #COMMANDS TO RUN :
 
 - git clone https://github.com/Kalown/miner/ 
-- Cd miner
-- python3 miner 
+- cd miner/MINER/email_scraper
+- scrapy crawl email_spider -o emails.json 
 
 
 #**AND-YOU-ARE-ALL-SET** 

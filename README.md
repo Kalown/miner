@@ -1,5 +1,5 @@
 # miner
-Miner is a simple but powerful web scraping tool which can scrap the HELL out of a website.
+Miner is a simple web scraping tool which can scrap Emails out of a website.
 
 **#Requirements:**
 

@@ -10,7 +10,8 @@ pip install scrapy
 
 - git clone https://github.com/Kalown/miner/ 
 - cd miner/MINER/email_scraper
-- scrapy crawl email_spider -o emails.json 
+- scrapy crawl email_spider -o output.json -s LOG_LEVEL=ERROR
+
 
 [NOTE: You can find the output in miner/MINER/email_scraper]
 
